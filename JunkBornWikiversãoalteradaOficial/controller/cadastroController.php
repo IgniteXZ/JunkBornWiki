@@ -3,8 +3,43 @@
     
 
 require_once __DIR__.'/../model/cadastroModel.php';
+require_once __DIR__.'/../model/perfilModel.php';
+
 
     class CadastroController {
+
+        public function abrirLogin(){
+            include __DIR__ . "/../view/login.php";
+        }
+
+        public function autenticar() {
+            if ($_SERVER['REQUEST_METHOD'] =='POST') {
+                $loginDigitado = $_POST['usuario'];
+                $senhaDigitado = trim($_POST['senhaLogin']);
+
+                $model = new Cadastro();
+                $usuario = $model->logar($loginDigitado);
+
+                if($usuario && password_verify($senhaDigitado, $usuario['senha'])) {
+                    if(session_status() === PHP_SESSION_NONE) {
+                        session_start();
+                    }   
+
+                    $_SESSION['usuario_funcional']=$usuario['funcional'];
+                    $_SESSION['usuario_nome']=$usuario['nomefunc'];
+                    header("Location: ../index.php?action=menu");
+                    exit;
+                }
+                else{
+                    echo "<script>
+                            alert('Credenciais invalidas. Verifique seu usuario e senha');
+                            windows.history.back
+                            </script>";
+                }
+
+
+            }
+        }
 
         public function cadastrar()
         
@@ -20,6 +55,8 @@ require_once __DIR__.'/../model/cadastroModel.php';
                 $senha = preg_replace('/\s+/', '', $senha);
                 $senhaHash = password_hash($senha, PASSWORD_DEFAULT);
 
+            
+            
                   
 
                     if($nome === "" || $email === "" || $senha === "")

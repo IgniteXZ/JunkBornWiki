@@ -54,7 +54,7 @@ require_once __DIR__ . '/../config/conexao.php';
                                     <tr>
                                         <td><?= htmlspecialchars($u['nomeUsuario']) ?></td>
                                         <td><?= htmlspecialchars($u['biografia']) ?></td>
-                                        <td><img src="/JunkBornWiki/<?php echo $u['endpasta'] ?>"></td> 
+                                        <td><img width="80px" src="../<?php echo $u['endpasta'] ?>"></td> 
                                     </tr>
                                 <?php endforeach; ?> 
                                                        

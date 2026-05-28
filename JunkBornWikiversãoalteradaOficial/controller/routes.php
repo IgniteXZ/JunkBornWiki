@@ -8,7 +8,6 @@
 
     $action=$_GET['action']??'menu';
     $cadastro = new CadastroController();
-    $logado = new LoginController();
     $Perfil = new PerfilController();
     $personagem = new PersonagemController();
 
@@ -26,11 +25,6 @@
 
         break;
 
-        case 'formL':
-
-            include __DIR__ . '/../view/login.php';
-
-        break;
 
         
         case 'formP':
@@ -55,11 +49,24 @@
 
         break;
 
+        
+        case 'formL':
+
+            $cadastro ->abrirLogin();
+  
+          break;
+
         case 'logar':
 
-            $logado->logar();
+            $cadastro->autenticar();
 
         break;
+
+
+        case 'meuPerfil':
+          //  $cadastro->meuPerfil();    
+        break;
+
 
         case 'criarPerfil':
             $Perfil->inserirImagem();
