@@ -2,7 +2,6 @@
 
 
     require_once __DIR__ . '/cadastroController.php';
-    require_once __DIR__ . '/loginController.php';
     require_once __DIR__ . '/perfilController.php';
     require_once __DIR__ . '/personagemController.php';
 

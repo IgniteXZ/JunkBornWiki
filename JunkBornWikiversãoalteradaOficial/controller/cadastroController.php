@@ -27,13 +27,13 @@ require_once __DIR__.'/../model/perfilModel.php';
 
                     $_SESSION['usuario_funcional']=$usuario['funcional'];
                     $_SESSION['usuario_nome']=$usuario['nomefunc'];
-                    header("Location: ../index.php?action=menu");
+                    header("Location: ../index.php?action=formL");
                     exit;
                 }
                 else{
                     echo "<script>
                             alert('Credenciais invalidas. Verifique seu usuario e senha');
-                            windows.history.back
+                            window.history.back();
                             </script>";
                 }
 
@@ -77,7 +77,7 @@ require_once __DIR__.'/../model/perfilModel.php';
                     {
                         echo "<script>
                             alert('Usuário cadastrado com sucesso!');
-                            window.location.href = '../view/login.php';
+                            window.location.href = '../controller/routes.php?action=form';
                             </script>";
                        
                     } else {
